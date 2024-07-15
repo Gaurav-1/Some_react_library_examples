@@ -1,0 +1,27 @@
+.chartsStyle{
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    width: 100%;
+}
+
+.pieChart{
+    width: 38%;
+    height: 500px;
+}
+
+.barChart{
+    width: 35%;
+}
+
+.chartJsPie{
+    width: 50%;
+}
+
+.chartJsBar{
+    width: 50%;
+}
+
+.subChartStyle{
+    display: flex;
+}

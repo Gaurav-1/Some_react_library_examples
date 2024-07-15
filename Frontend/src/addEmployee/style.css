@@ -1,0 +1,40 @@
+.addEmployee {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80dvh;
+  gap: 20px;
+  border-radius: 10px;
+  padding: 30px 20px;
+  font-size: 18px;
+}
+
+.addEmployee>*:not(:has(button)) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.addEmployee>div>label{
+  display: flex;
+  justify-content: center;
+}
+
+.addEmployee>div>input {
+  outline: none;
+  border: 1px solid gray;
+  padding-inline: 5px;
+  height: 30px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.addEmployee>div>button {
+  font-size: 16px;
+  width: 200px;
+  height: 35px;
+  border-radius: 10px;
+  background: #17da58;
+  border: none;
+  cursor: pointer;
+}

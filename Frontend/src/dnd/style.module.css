@@ -1,0 +1,16 @@
+.imgDnd{
+  display: flex;
+}
+
+.targetBox{
+  border: 1px solid gray;
+  height: 1rem;
+  width: 15rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.preview{
+  display: flex;
+  justify-content: center;
+}
