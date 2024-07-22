@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@canvasjs/react-charts": "^1.0.2",
-    "antd": "^5.17.0",
+    "antd": "^5.19.2",
     "axios": "^1.6.8",
     "chart.js": "^4.4.3",
     "i18next": "^23.11.5",
@@ -21,6 +21,7 @@
     "leaflet.markercluster": "^1.5.3",
     "mobx": "^6.12.3",
     "mobx-react": "^9.1.1",
+    "multer": "^1.4.5-lts.1",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",
     "react-dnd": "^16.0.1",

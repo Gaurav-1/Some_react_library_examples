@@ -41,7 +41,7 @@ function App() {
     setMap(false)
     setAddEmployee(false)
     setShowChart(false)
-    setDnd(true)
+    setDnd(false)
 
     link == 'home' && setHome(true)
     link == 'map' && setMap(true)

@@ -41,23 +41,22 @@ export function TargetBox({ onDrop, files }) {
 
     const isActive = canDrop && isOver
 
-    const preview = files.map((file: any)=>{
+    const preview = files.map((file: any) => {
         const src = URL.createObjectURL(file)
-        return <img src={src} key={file.name} style={{width: '100%', height: '100%'}} />
+        return <img src={src} key={file.name} style={{ width: '100%', height: '100%' }} />
     })
 
     return (
         <div ref={drop} className={style.targetBox}>
-            {!files.name ? (isActive ? 'Release to drop' : 'Drag file here') : ''}
+            {!files.name ? (isActive ? 'Release to drop' : 'Drag image here') : ''}
             <div className={style.preview}>
                 {preview}
-                {console.log('dfjm',files)}
             </div>
         </div>
     )
 }
 
-export default function Dnd({setImage}) {
+export default function Dnd({ setImage }) {
     const [droppedFiles, setDroppedFiles] = useState<File[]>([])
 
     const handleFileDrop = useCallback(
