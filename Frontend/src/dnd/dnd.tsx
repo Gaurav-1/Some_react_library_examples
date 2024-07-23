@@ -4,15 +4,16 @@ import { HTML5Backend, NativeTypes } from 'react-dnd-html5-backend'
 import style from './style.module.css'
 import { message } from 'antd'
 
-export interface FileListProps {
-    files: File[]
-}
+// export interface FileListProps {
+//     files: File[]
+// }
 
 export interface TargetBoxProps {
     onDrop: (item: { files: any[] }) => void
+    files: File[]
 }
 
-export function TargetBox({ onDrop, files }) {
+export function TargetBox({ onDrop, files }: TargetBoxProps) {
 
     const [{ canDrop, isOver }, drop] = useDrop(
         () => ({
@@ -21,16 +22,12 @@ export function TargetBox({ onDrop, files }) {
                 if (onDrop) {
                     const imageFile = item.files.filter(file => file.type.startsWith('image/'))
                     if (imageFile.length > 0)
-                        onDrop(item)
+                        onDrop({files: imageFile})
                     else
                         message.error('Only image files are accepted')
                 }
             },
             collect: (monitor: DropTargetMonitor) => {
-                const item = monitor.getItem() as any
-                if (item) {
-                    console.log('collect', item.files, item.items);
-                }
                 return {
                     isOver: monitor.isOver(),
                     canDrop: monitor.canDrop()
@@ -41,14 +38,14 @@ export function TargetBox({ onDrop, files }) {
 
     const isActive = canDrop && isOver
 
-    const preview = files.map((file: any) => {
+    const preview = useMemo(()=>files.map((file: any) => {
         const src = URL.createObjectURL(file)
-        return <img src={src} key={file.name} style={{ width: '100%', height: '100%' }} />
-    })
+        return <img src={src} key={file.name} style={{ width: '90%', height: '5rem' }} alt={file.name} />
+    }),[files])
 
     return (
         <div ref={drop} className={style.targetBox}>
-            {!files.name ? (isActive ? 'Release to drop' : 'Drag image here') : ''}
+            {!files.length ? (isActive ? 'Release to drop' : 'Drag image here') : null}
             <div className={style.preview}>
                 {preview}
             </div>
@@ -61,18 +58,17 @@ export default function Dnd({ setImage }) {
 
     const handleFileDrop = useCallback(
         (item: { files: any[] }) => {
-            if (item) {
+            if (item && item.files.length >0) {
                 const files = item.files
                 setDroppedFiles(files)
-                setImage(files)
+                setImage(files[0])
             }
-        }, [setDroppedFiles]
+        }, [setImage]
     )
 
 
     const list = (files: File[]) => {
-        const label = (file: File) => `'${file.name}' of size '${file.size}' and type '${file.type}'`
-        return files.map((file) => <label key={file.name}>{label(file)}</label>)
+        return files.map((file) => <label key={file.name} className={style.fileName}>{file.name}</label>)
     }
 
     return (

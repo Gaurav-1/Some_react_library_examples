@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Popconfirm, Table, Button, message } from 'antd'
 import { useStore } from '../store/store'
 import axios from 'axios'
-import { toJS } from 'mobx'
+import { keys, toJS } from 'mobx'
 import { observer } from 'mobx-react'
 import { useTranslation } from 'react-i18next'
 import './style.css'
@@ -28,10 +28,15 @@ function PeopleList() {
 
   const columns = [
     {
+      title: 'Image',
+      dataIndex: 'images',
+      key: 'images',
+      render: (text: string)=> <img src={`/employeesPics${text}`} alt="Employee Image" style={{width: '50px', height: '50px'}} />
+    },
+    {
       title: Tbname,
       dataIndex: 'name',
       key: 'name',
-      showSorterTooltip: {target: 'full-header'}
     },
     {
       title: Tbaddress,
@@ -63,7 +68,7 @@ function PeopleList() {
       dataIndex: 'operation',
       render: (_, record) =>
         store.employee.length > 0 ? (
-          <Popconfirm title={popup.title} okText={popup.ok} cancelText={popup.cancel} onConfirm={() => { console.log(toJS(record).id); DeleteEmployee(toJS(record).id) }}>
+          <Popconfirm title={popup.title} okText={popup.ok} cancelText={popup.cancel} onConfirm={() => { DeleteEmployee(toJS(record).id) }}>
             <Button type='primary'>{Tbbutton}</Button>
           </Popconfirm>
         ) : null

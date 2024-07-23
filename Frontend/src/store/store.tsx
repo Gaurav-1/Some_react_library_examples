@@ -4,7 +4,7 @@ import { translate } from 'google-translate-api-x'
 
 class IEmployee {
     id!: string;
-    img?: string;
+    images!: string;
     name!: string;
     address!: string;
     city!: string;
@@ -31,7 +31,7 @@ class EmployeeStore {
     addEmployee = (props: any) => {
         this.employee.push({
             id: props.id,
-            img: props.img,
+            images: props.images,
             name: props.name,
             address: props.address,
             city: props.city,

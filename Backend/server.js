@@ -7,7 +7,7 @@ const fs = require('fs')
 const path = require('path')
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '/public/employeePics'))
+        cb(null, path.join(__dirname, '/public/employeesPics'))
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + '-' + file.originalname)
@@ -19,7 +19,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(__dirname + '/public'))
-app.use(upload.any())
+app.use(upload.single('image'))
 
 const con = mysql.createConnection({
     host: process.env.DBHOST,
@@ -66,7 +66,6 @@ const deleteEmployee = async (req, res) => {
 }
 
 const addEmployee = async (req, res) => {
-    console.log(req)
     try {
         const result = await fetch(`https://api.geoapify.com/v1/geocode/search?text=${req.body.city},${req.body.state},${req.body.country}&apiKey=8bd6cc7da70c47acb3a2836c760689fc`, { method: 'GET' })
             .then(response => response.json())
@@ -76,7 +75,7 @@ const addEmployee = async (req, res) => {
         const id = uuid()
         const body = {
             id: id,
-            img: req.file.filename,
+            images: '/'+req.file.filename,
             name: req.body.name,
             address: req.body.address,
             city: req.body.city,

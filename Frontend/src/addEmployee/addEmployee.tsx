@@ -23,15 +23,17 @@ export default function AddEmployee() {
 
     const AddEmployee = async () => {
         try {
-            const body = { image, name, address, city, state, country, salary }
-            // body.append('EmpImg', image)
-            // body.append('name', name)
-            // body.append('address', address)
-            // body.append('city', city)
-            // body.append('state', state)
-            // body.append('country', country)
-            // body.append('salary', salary)
-            const result = await axios({ method: 'post', url: '/employee', data: { ...body }, headers: {'Content-Type' : 'multipart/form-data'} }).then(res => res.data)
+            const body = new FormData(); //{ image, name, address, city, state, country, salary }
+            body.append('image', image)
+            body.append('name', name)
+            body.append('address', address)
+            body.append('city', city)
+            body.append('state', state)
+            body.append('country', country)
+            body.append('salary', salary)
+
+            const result = await axios({ method: 'post', url: '/employee', data: body, headers: {'Content-Type' : 'multipart/form-data'} }).then(res => res.data)
+
             store.addEmployee(result.message)
             message.success('Employee Added')
         } catch (error) {
@@ -51,14 +53,14 @@ export default function AddEmployee() {
         setCity('')
         setState('')
         setCountry('')
-        setSalary(0)
+        setSalary()
     }
 
     return (
         <div className='addEmployee'>
             <div>
                 <label htmlFor="image">{Fimage}</label>
-                <div><Dnd setImage={setImage} /></div>
+                <div><Dnd image={image} setImage={setImage} /></div>
             </div>
             <div>
                 <label htmlFor="name">{Fmname}</label>
@@ -82,7 +84,7 @@ export default function AddEmployee() {
             </div>
             <div>
                 <label htmlFor="salary">{Fmsalary}</label>
-                <input name='salary' type="number" placeholder={Fmsalary} onChange={(e) => setSalary(e.target.valueAsNumber)} />
+                <input name='salary' type="number" placeholder={Fmsalary} value={salary} onChange={(e) => setSalary(e.target.valueAsNumber)} />
             </div>
             <div><button onClick={AddEmployee}>{Fmbtn}</button></div>
         </div>

@@ -4,14 +4,28 @@
 
 .targetBox{
   border: 1px solid gray;
-  height: 1rem;
-  width: 15rem;
-  padding: 2rem;
+  height: 6rem;
+  width: 19rem;
   text-align: center;
+  align-content: center;
   overflow: hidden  ;
 }
 
 .preview{
   display: flex;
   justify-content: center;
+}
+
+.fileName{
+  display: block;
+  white-space: nowrap;
+  width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fileName:hover{
+  overflow: visible;
+  white-space: normal;
+  height: auto;
 }
