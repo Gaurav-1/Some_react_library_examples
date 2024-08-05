@@ -15,7 +15,7 @@ export default function Header({ handleHeader }) {
                 <Button type='primary' key='map' onClick={() => handleHeader('map')}>{map}</Button>
                 <Button type='primary' key='add employee' onClick={() => handleHeader('add employee')}>{addEmp}</Button>
                 <Button type='primary' key='chart' onClick={() => handleHeader('chart')}>{visData}</Button>
-                {/* <Button type='primary' key='dnd' onClick={() => handleHeader('dnd')}>{'Dnd'}</Button> */}
+                <Button type='primary' key='dragable' onClick={() => handleHeader('dragable')}>{'DragDrop'}</Button>
             </div>
             <div>
                 <LanguageSelector />

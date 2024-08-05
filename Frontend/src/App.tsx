@@ -12,7 +12,7 @@ import LanguageSelector from './components/languageSelector'
 import Header from './header/header'
 import Charts from './chart/chart'
 import AddEmployee from './addEmployee/addEmployee'
-import Dnd from './dnd/dnd'
+import Dragable from './dragable/dragable'
 
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
   const [map, setMap] = useState(false)
   const [addEmployee, setAddEmployee] = useState(false)
   const [showChart, setShowChart] = useState(false)
-  // const [dnd, setDnd] = useState(false)
+  const [dragable, setDragable] = useState(false)
 
   const getEmployee = async () => {
     try {
@@ -41,13 +41,13 @@ function App() {
     setMap(false)
     setAddEmployee(false)
     setShowChart(false)
-    // setDnd(false)
+    setDragable(false)
 
     link == 'home' && setHome(true)
     link == 'map' && setMap(true)
     link == 'add employee' && setAddEmployee(true)
     link == 'chart' && setShowChart(true)
-    // link == 'dnd' && setDnd(true)
+    link == 'dragable' && setDragable(true)
   }
 
   useEffect(() => {
@@ -66,7 +66,7 @@ function App() {
 
       {showChart && <Charts />}
 
-      {/* {dnd && <Dnd/>} */}
+      {dragable && <Dragable/>}
 
     </>
   )
