@@ -20,6 +20,13 @@ i18n
       en: {
         translation: {
           languageChangeMsg: 'Language is changed to English.',
+          header: {
+            home: 'Home',
+            map: 'Map',
+            addEmp: 'Add Employee',
+            visData: 'Visualize Data',
+            dragable: 'Drag Drop',
+          },
           addEmployee: {
             Fimage: 'Image',
             Fmname: 'Name',
@@ -30,11 +37,11 @@ i18n
             Fmsalary: 'Salary',
             Fmbtn: 'Add Employee',
           },
-          header: {
-            home: 'Home',
-            map: 'Map',
-            addEmp: 'Add Employee',
-            visData: 'Visualize Data',
+          dnd:{
+            dragMsg:'Drag image here',
+            dropMsg: 'Release to drop',
+            fileMsg: 'No file dropped',
+            fileErrorMsg: 'Only image files are accepted'
           },
           tables: {
             Tbname: 'Name',
@@ -56,13 +63,25 @@ i18n
             BarTitle: 'Salary Range of Employees',
             employee: 'Employee',
             salary: 'salary',
+          },
+          dragDrop:{
+            employeeList: 'EmployeeList',
+            dragMsg: 'Drag an employee here to see details',
           }
         }
       },
       hi: {
         translation: {
           languageChangeMsg: 'भाषा बदलकर हिंदी कर दी गई है।',
+          header: {
+            home: 'होम',
+            map: 'नक्शा',
+            addEmp: 'कर्मचारी जोड़ें',
+            visData: 'डेटा विज़ुअलाइज़',
+            dragable: 'ड्रैग ड्रॉप',
+          },
           addEmployee: {
+            Fimage: 'तस्वीर',
             Fmname: 'नाम',
             Fmaddress: 'पता',
             Fmcity: 'शहर',
@@ -71,11 +90,11 @@ i18n
             Fmsalary: 'वेतन',
             Fmbtn: 'कर्मचारी जोड़ें',
           },
-          header: {
-            home: 'होम',
-            map: 'नक्शा',
-            addEmp: 'कर्मचारी जोड़ें',
-            visData: 'डेटा विज़ुअलाइज़',
+          dnd:{
+            dragMsg: 'फ़ोटो को यहां ड्रैग करें',
+            dropMsg: 'ड्रॉप के लिए रिलीज करें',
+            fileMsg: 'कोई फ़ाइल नहीं है',
+            fileErrorMsg: 'केवल फोटो फ़ाइलें ही स्वीकार की जाएंगी',
           },
           tables: {
             Tbname: 'नाम',
@@ -97,13 +116,25 @@ i18n
             BarTitle: 'कर्मचारियों की वेतन सीमा',
             employee: 'कर्मचारी',
             salary: 'वेतन',
+          },
+          dragDrop:{
+            employeeList:'कर्मचारी सूची',
+            dragMsg: 'विवरण देखने के लिए किसी कर्मचारी को यहां ड्रैग करें',
           }
         }
       },
       ja:{
         translation: {
           languageChangeMsg: '言語が日本語に変更されました。',
+          header: {
+            home: '家',
+            map: '地図',
+            addEmp: '従業員を追加',
+            visData: 'データを視覚化する',
+            dragable: 'ドラッグドロップ',
+          },
           addEmployee: {
+            Fimage: '写真',
             Fmname: '名前',
             Fmaddress: '住所',
             Fmcity: '市',
@@ -112,11 +143,11 @@ i18n
             Fmsalary: '給料',
             Fmbtn: '従業員を追加',
           },
-          header: {
-            home: '家',
-            map: '地図',
-            addEmp: '従業員を追加',
-            visData: 'データを視覚化する',
+          dnd:{
+            dragMsg: '写真をここにドラッグ',
+            dropMsg: 'リリースするとドロップします',
+            fileMsg: 'ファイルはドロップされませんでした',
+            fileErrorMsg: '写真ファイルのみ受け付けます',
           },
           tables: {
             Tbname: '名前',
@@ -138,6 +169,10 @@ i18n
             BarTitle: '従業員の給与範囲',
             employee: '従業員',
             salary: '給料',
+          },
+          dragDrop:{
+            employeeList: '従業員リスト',
+            dragMsg: '詳細を表示するには従業員をここにドラッグしてください',
           }
         }
       },

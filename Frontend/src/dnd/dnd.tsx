@@ -3,6 +3,8 @@ import { DndProvider, DropTargetMonitor, useDrop } from 'react-dnd'
 import { HTML5Backend, NativeTypes } from 'react-dnd-html5-backend'
 import style from './style.module.css'
 import { message } from 'antd'
+import {useTranslation} from 'react-i18next'
+import { Util } from 'leaflet'
 
 // export interface FileListProps {
 //     files: File[]
@@ -12,8 +14,9 @@ export interface TargetBoxProps {
     onDrop: (item: { files: any[] }) => void
     files: File[]
 }
-
 export function TargetBox({ onDrop, files }: TargetBoxProps) {
+    const {t} = useTranslation()
+    const {dragMsg, dropMsg, fileErrorMsg} = t('dnd')
 
     const [{ canDrop, isOver }, drop] = useDrop(
         () => ({
@@ -24,7 +27,7 @@ export function TargetBox({ onDrop, files }: TargetBoxProps) {
                     if (imageFile.length > 0)
                         onDrop({files: imageFile})
                     else
-                        message.error('Only image files are accepted')
+                        message.error(fileErrorMsg)
                 }
             },
             collect: (monitor: DropTargetMonitor) => {
@@ -45,7 +48,7 @@ export function TargetBox({ onDrop, files }: TargetBoxProps) {
 
     return (
         <div ref={drop} className={style.targetBox}>
-            {!files.length ? (isActive ? 'Release to drop' : 'Drag image here') : null}
+            {!files.length ? (isActive ? dropMsg : dragMsg) : null}
             <div className={style.preview}>
                 {preview}
             </div>
@@ -55,6 +58,8 @@ export function TargetBox({ onDrop, files }: TargetBoxProps) {
 
 export default function Dnd({ setImage }) {
     const [droppedFiles, setDroppedFiles] = useState<File[]>([])
+    const {t} = useTranslation()
+    const {fileMsg} = t('dnd')
 
     const handleFileDrop = useCallback(
         (item: { files: any[] }) => {
@@ -74,7 +79,7 @@ export default function Dnd({ setImage }) {
     return (
         <DndProvider backend={HTML5Backend}>
             <TargetBox onDrop={handleFileDrop} files={droppedFiles} />
-            {(droppedFiles.length > 0) ? list(droppedFiles) : <div>No file dropped</div>}
+            {(droppedFiles.length > 0) ? list(droppedFiles) : <div>{fileMsg}</div>}
         </DndProvider>
     )
 }

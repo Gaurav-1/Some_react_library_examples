@@ -2,10 +2,13 @@ import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautif
 import { useStore } from '../store/store'
 import { useState } from 'react'
 import style from './style.module.css'
+import {useTranslation} from 'react-i18next'
 
 export default function Dragable() {
     const store = useStore()
     const [selectedEmpId, setSelectedEmpId] = useState<string | null>(null)
+    const {t} = useTranslation()
+    const {employeeList,  dragMsg} = t('dragDrop')
 
     function handleOnDragEnd(result: DropResult) {
         const { source, destination } = result
@@ -33,7 +36,7 @@ export default function Dragable() {
         <DragDropContext onDragEnd={handleOnDragEnd}>
             <div className={style.dragable}>
                 <div className={style.list_box}>
-                    <h3>Employees List</h3>
+                    <h3>{employeeList}</h3>
                     <Droppable droppableId='list-box'>
                         {(provided) => (
                             <div
@@ -62,7 +65,7 @@ export default function Dragable() {
                                 ref={provided.innerRef}
                                 {...provided.droppableProps}
                             >
-                                {selectedEmpId ? selectedEmp() : <p>Drag an employee here to see details</p>}
+                                {selectedEmpId ? selectedEmp() : <p>{dragMsg}</p>}
                             </div>
                         )}
                     </Droppable>
